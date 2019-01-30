@@ -59,6 +59,15 @@ vueConfig.configureWebpack = (config) => {
     exclude: /node_modules/,
     loader: 'graphql-tag/loader',
   });
+  
+  config.module.rules.push({
+    test: /\.(ts|tsx)?$/,
+    loader: 'ts-loader',
+    exclude: /node_modules/,
+    options: {
+      appendTsSuffixTo: [/\.vue$/],
+    }
+  });
 };
 
 // Below is a workaround when building the app within the context of the JSS monorepo.
